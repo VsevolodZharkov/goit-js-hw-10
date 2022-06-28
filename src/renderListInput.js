@@ -1,9 +1,7 @@
-
-
 const renderList = countrys => {
-	const ul = document.querySelector('.country-list');
-	const markup = countrys
-    .map((country) => {
+  const ul = document.querySelector('.country-list');
+  const markup = countrys
+    .map(country => {
       return `
           <li>
 						<img class="country" src="${country.flags.svg}" alt="country">
@@ -11,7 +9,7 @@ const renderList = countrys => {
           </li>
       `;
     })
-    .join("");
-		ul.innerHTML = markup;
-}
+    .join('');
+  ul.innerHTML = markup;
+};
 export { renderList };

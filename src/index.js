@@ -1,6 +1,6 @@
 import { fetchCountries } from './fetchCountries';
 import './css/styles.css';
-import { debounce } from "debounce";
+import { debounce } from 'debounce';
 
 // const searchParams = new URLSearchParams({
 //   name: name.official,
@@ -17,9 +17,9 @@ const divInfo = document.querySelector('.country-info');
 input.addEventListener('input', debounce(inputHandler, DEBOUNCE_DELAY));
 
 function inputHandler(e) {
-	e.preventDefault();
-	divInfo.innerHTML = '';
+  e.preventDefault();
+  divInfo.innerHTML = '';
   const valueINp = e.target.value;
-	let elem = valueINp.trim();
-	fetchCountries(elem);
+  let elem = valueINp.trim();
+  fetchCountries(elem);
 }
