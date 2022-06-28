@@ -11,12 +11,14 @@ import { debounce } from "debounce";
 // });
 const DEBOUNCE_DELAY = 300;
 const input = document.querySelector('#search-box');
-
+const ul = document.querySelector('.country-list');
+const divInfo = document.querySelector('.country-info');
 
 input.addEventListener('input', debounce(inputHandler, DEBOUNCE_DELAY));
 
 function inputHandler(e) {
-	e.preventDefault()
+	e.preventDefault();
+	divInfo.innerHTML = '';
   const valueINp = e.target.value;
 	let elem = valueINp.trim();
 	fetchCountries(elem);
