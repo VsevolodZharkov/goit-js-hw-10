@@ -1,17 +1,18 @@
 
 
-export default function renderList(countrys) {
+const renderList = countrys => {
 	const ul = document.querySelector('.country-list');
-	console.log(countrys);
+	const {name, flags } = countrys;
 	const markup = countrys
     .map((country) => {
       return `
           <li>
 						<img class="country" src="${country.flags.svg}" alt="country">
-						<h2>${country.name.official}</h2>
+						<h2>${country.name}</h2>
           </li>
       `;
     })
     .join("");
 		ul.innerHTML = markup;
 }
+export { renderList };

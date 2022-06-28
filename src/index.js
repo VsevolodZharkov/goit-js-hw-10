@@ -18,7 +18,6 @@ input.addEventListener('input', debounce(inputHandler, DEBOUNCE_DELAY));
 function inputHandler(e) {
 	e.preventDefault()
   const valueINp = e.target.value;
-	const elem = valueINp.trim();
-	console.log(elem);
+	let elem = valueINp.trim();
 	fetchCountries(elem);
 }

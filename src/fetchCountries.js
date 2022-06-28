@@ -1,19 +1,20 @@
 import Notiflix from 'notiflix';
 import { renderMarcup } from './renderMarcup';
-import { renderList } from './renderMarcup';
+import { renderList } from './renderListInput';
 
+const ul = document.querySelector('.country-list');
 const fetchCountries = (name) => {
-  return fetch(`https://restcountries.com/v3.1/name/${name}`)
+  return fetch(`https://restcountries.com/v2/name/${name}?name.official,capital,population,languages,flags.svg`)
     .then(response => {
       if (!response.ok) {
-        throw new Error(response.status);
+				Notiflix.Notify.failure('Oops, there is no country with that name');
+				throw new Error(response.status);
       }
       return response.json();
     })
     .then(data => {
-      console.log(data.length);
-      console.log(data);
-
+      // console.log(data.length);
+      // console.log(data);
       if (data.length > 10) {
         Notiflix.Notify.info(
           'Too many matches found. Please enter a more specific name.'
@@ -21,16 +22,14 @@ const fetchCountries = (name) => {
         return;
       }
       if (data.length >= 2 || data.length <= 10) {
-        return renderList(data);
-				
+        renderList(data);
+				if(data.length === 1 ) {
+					ul.innerHTML = '';
+					const elem = data[0];
+					renderMarcup(elem);
+				}
       }
-
-			if(data.length === 1 ) {
-				const elem = data[0];
-				renderMarcup(elem);
-			}
-      
-    });
+    }).catch(error => console.log(error));
 };
 
 export {fetchCountries};
