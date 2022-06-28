@@ -1,4 +1,8 @@
-export default function fetchCountries(name) {
+import Notiflix from 'notiflix';
+import { renderMarcup } from './renderMarcup';
+import { renderList } from './renderMarcup';
+
+const fetchCountries = (name) => {
   return fetch(`https://restcountries.com/v3.1/name/${name}`)
     .then(response => {
       if (!response.ok) {
@@ -7,10 +11,26 @@ export default function fetchCountries(name) {
       return response.json();
     })
     .then(data => {
-			data
-			.then(data => console.log(data))
-			// // https://restcountries.com/v2/all?=name,capital,currencies
-			// console.log(data[0])
-		})
-    .catch(error => console.log(error));
-}
+      console.log(data.length);
+      console.log(data);
+
+      if (data.length > 10) {
+        Notiflix.Notify.info(
+          'Too many matches found. Please enter a more specific name.'
+        );
+        return;
+      }
+      if (data.length >= 2 || data.length <= 10) {
+        return renderList(data);
+				
+      }
+
+			if(data.length === 1 ) {
+				const elem = data[0];
+				renderMarcup(elem);
+			}
+      
+    });
+};
+
+export {fetchCountries};

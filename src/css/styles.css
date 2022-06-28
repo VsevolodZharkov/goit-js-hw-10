@@ -18,3 +18,10 @@ body {
   max-width: 320px;
   margin-bottom: 16px;
 }
+.big {
+	font-weight:bold;
+}
+.country {
+	display: block;
+	height: 30px;
+}
