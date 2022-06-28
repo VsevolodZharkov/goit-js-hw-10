@@ -2,7 +2,6 @@
 
 const renderList = countrys => {
 	const ul = document.querySelector('.country-list');
-	const {name, flags } = countrys;
 	const markup = countrys
     .map((country) => {
       return `
