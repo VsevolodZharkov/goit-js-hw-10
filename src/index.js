@@ -19,8 +19,8 @@ function inputHandler(e) {
   let elem = valueINp.trim();
   fetchCountries(elem)
     .then(data => {
-      console.log(data.length);
-      console.log(data);
+      // console.log(data.length);
+      // console.log(data);
       if (data.length > 10) {
         Notiflix.Notify.info(
           'Too many matches found. Please enter a more specific name.'

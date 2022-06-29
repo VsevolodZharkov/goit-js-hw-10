@@ -1,5 +1,5 @@
 const renderMarcup = elem => {
-  console.log(elem);
+  // console.log(elem);
   let langMas = [];
   const { name, capital, population, languages, flags } = elem;
   const divInfo = document.querySelector('.country-info');
